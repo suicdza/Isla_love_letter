@@ -1,26 +1,6 @@
-/* =========================================
-   VARIABLES
-========================================= */
-
-:root {
-    --black: #0b090c;
-    --black-soft: #121015;
-
-    --paper: #e8ded8;
-    --paper-dark: #d8cbc5;
-    --ink: #241e21;
-
-    --pink-dark: #6e394a;
-    --pink: #b78391;
-    --pink-light: #d7b5be;
-
-    --white: #eee5e8;
-}
-
-
-/* =========================================
-   RESET
-========================================= */
+/* ================================
+   GENERAL
+================================ */
 
 * {
     box-sizing: border-box;
@@ -28,331 +8,343 @@
     padding: 0;
 }
 
-html {
-    scroll-behavior: smooth;
+html,
+body {
+    width: 100%;
+    min-height: 100%;
 }
 
 body {
-    min-height: 100vh;
-
-    background: var(--black);
-    color: var(--white);
-
+    background: #0B090C;
+    color: #EEE5E8;
     font-family: Georgia, "Times New Roman", serif;
-
     overflow-x: hidden;
 }
 
 
-/* =========================================
-   GLOBAL SCREEN
-========================================= */
+/* ================================
+   SCREEN SYSTEM
+================================ */
 
 .screen {
-    min-height: 100vh;
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100vh;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    position: relative;
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 
-/* =========================================
+/* ================================
    COVER
-========================================= */
+================================ */
 
 #cover {
     background:
         radial-gradient(
-            circle at center,
-            #171218 0%,
-            #0b090c 65%,
-            #08070a 100%
-        );
-
-    transition:
-        opacity 1.2s ease,
-        transform 1.2s ease;
-}
-
-.paper-cover {
-    width: min(720px, 88vw);
-    min-height: 720px;
-
-    padding: 75px 80px;
-
-    background:
-        linear-gradient(
-            rgba(232, 222, 216, 0.98),
-            rgba(224, 212, 206, 0.98)
-        );
-
-    color: var(--ink);
+            circle at 50% 45%,
+            rgba(110, 57, 74, 0.16),
+            transparent 38%
+        ),
+        #0B090C;
 
     position: relative;
-
-    box-shadow:
-        0 35px 100px rgba(0, 0, 0, 0.65);
-
-    display: flex;
-    flex-direction: column;
 }
 
 
-/* =========================================
-   PAPER TEXTURE
-========================================= */
+/* subtle digital grain */
 
-.paper-cover::before,
-.letter::before {
+#cover::before {
     content: "";
-
     position: absolute;
     inset: 0;
 
-    opacity: 0.08;
-
     pointer-events: none;
 
+    opacity: 0.08;
+
     background-image:
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 3px,
-            rgba(80, 50, 55, 0.3) 4px
+        repeating-radial-gradient(
+            circle at 0 0,
+            transparent 0,
+            transparent 1px,
+            rgba(255,255,255,0.15) 1px,
+            rgba(255,255,255,0.15) 2px
         );
+
+    background-size: 5px 5px;
 }
 
 
-/* =========================================
-   DATE
-========================================= */
+/* small atmospheric glow */
 
-.date,
-.letter-date {
-    font-family: Arial, Helvetica, sans-serif;
+#cover::after {
+    content: "";
 
-    font-size: 10px;
+    position: absolute;
 
-    letter-spacing: 0.28em;
+    width: 420px;
+    height: 420px;
 
-    color: #76676b;
+    border-radius: 50%;
 
-    text-transform: uppercase;
+    background: rgba(183, 131, 145, 0.06);
+
+    filter: blur(90px);
+
+    pointer-events: none;
 }
 
 
-/* =========================================
+/* ================================
    COVER CONTENT
-========================================= */
+================================ */
 
 .cover-content {
-    margin-top: 115px;
-
     position: relative;
     z-index: 2;
+
+    width: min(700px, 90%);
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    animation: coverAppear 2s ease forwards;
 }
 
-.salutation {
-    font-size: clamp(28px, 4vw, 40px);
+
+/* ISLA */
+
+.cover-name {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.65rem;
+
+    margin-left: 0.65rem;
+
+    color: #D7B5BE;
+
+    opacity: 0.8;
+
+    margin-bottom: 2rem;
+}
+
+
+/* a love letter */
+
+.cover-content h1 {
+    font-size: clamp(2.8rem, 7vw, 5.8rem);
+
+    font-weight: 400;
+
+    letter-spacing: -0.04em;
+
+    line-height: 1;
+
+    color: #EEE5E8;
+
+    margin-bottom: 2.2rem;
+}
+
+
+/* My story between your fingers. */
+
+.cover-main {
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
 
     font-style: italic;
 
-    margin-bottom: 55px;
+    color: #D7B5BE;
+
+    margin-bottom: 1.6rem;
 }
 
-.opening-text {
-    max-width: 480px;
 
-    font-size: clamp(17px, 2vw, 21px);
+/* Every word... */
+
+.cover-subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 0.76rem;
 
     line-height: 1.9;
 
-    color: #332b2e;
+    letter-spacing: 0.08rem;
+
+    color: #A8959C;
+
+    margin-bottom: 3rem;
 }
 
-.opening-text p {
-    margin-bottom: 22px;
-}
 
+/* ================================
+   ENTER BUTTON
+================================ */
 
-/* =========================================
-   OPEN LETTER BUTTON
-========================================= */
-
-.open-link {
-    margin-top: auto;
-
-    align-self: flex-start;
-
-    border: none;
+#enter-button {
+    border: 1px solid rgba(215, 181, 190, 0.45);
 
     background: transparent;
 
-    font-family: Georgia, "Times New Roman", serif;
+    color: #EEE5E8;
 
-    font-size: 15px;
+    padding: 0.9rem 2.8rem;
 
-    color: var(--pink-dark);
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 0.35rem;
 
     cursor: pointer;
 
-    padding: 8px 0;
-
     transition:
-        color 0.3s ease,
-        transform 0.3s ease;
+        background 0.4s ease,
+        color 0.4s ease,
+        border-color 0.4s ease,
+        transform 0.4s ease;
 }
 
-.open-link span {
-    display: inline-block;
+#enter-button:hover {
+    background: #D7B5BE;
 
-    margin-left: 8px;
+    color: #0B090C;
 
-    transition:
-        transform 0.3s ease;
-}
+    border-color: #D7B5BE;
 
-.open-link:hover {
-    color: #43212d;
-}
-
-.open-link:hover span {
-    transform: translateX(6px);
+    transform: translateY(-3px);
 }
 
 
-/* =========================================
+/* date */
+
+.cover-date {
+    position: absolute;
+
+    top: calc(100% + 3rem);
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 0.55rem;
+
+    letter-spacing: 0.3rem;
+
+    color: #6E394A;
+}
+
+
+/* ================================
    ENVELOPE SCREEN
-========================================= */
+================================ */
 
 #envelope-screen {
-    min-height: 100vh;
-
     flex-direction: column;
 
     background:
         radial-gradient(
             circle at center,
-            #171218,
-            #0b090c 70%
-        );
-
-    opacity: 1;
-
-    transition:
-        opacity 1s ease;
-}
-
-.envelope-introduction {
-    margin-bottom: 45px;
-
-    font-size: 18px;
-
-    font-style: italic;
-
-    color: var(--paper);
-}
-
-.envelope-wrapper {
-    cursor: pointer;
-
-    perspective: 1200px;
+            rgba(110, 57, 74, 0.10),
+            transparent 45%
+        ),
+        #0B090C;
 }
 
 
-/* =========================================
+/* intro */
+
+.envelope-intro {
+    position: absolute;
+
+    top: 15%;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 0.68rem;
+
+    letter-spacing: 0.18rem;
+
+    color: #A8959C;
+
+    text-transform: lowercase;
+}
+
+
+/* ================================
    ENVELOPE
-========================================= */
+================================ */
 
 .envelope {
-    width: 430px;
-    height: 285px;
-
     position: relative;
 
-    transform-style: preserve-3d;
+    width: min(440px, 78vw);
 
-    transition:
-        transform 1s ease;
+    aspect-ratio: 1.55;
 
-    filter:
-        drop-shadow(
-            0 30px 40px rgba(0, 0, 0, 0.55)
-        );
+    cursor: pointer;
+
+    filter: drop-shadow(
+        0 25px 50px rgba(0, 0, 0, 0.55)
+    );
+
+    transition: transform 0.6s ease;
+}
+
+.envelope:hover {
+    transform: translateY(-8px);
 }
 
 
-/* Envelope back */
+/* envelope body */
 
-.envelope-back {
+.envelope-back,
+.envelope-front {
     position: absolute;
 
     inset: 0;
 
-    background: var(--paper-dark);
+    background: #24151B;
 
-    border-radius: 3px;
-
-    z-index: 1;
+    border: 1px solid #6E394A;
 }
 
 
-/* Letter inside envelope */
-
-.letter-preview {
-    position: absolute;
-
-    width: 90%;
-    height: 245px;
-
-    left: 5%;
-    top: 10px;
-
-    background: var(--paper);
-
-    color: var(--ink);
-
-    z-index: 2;
-
-    padding: 30px;
-
-    font-size: 17px;
-
-    transition:
-        transform 1s ease;
-}
-
-
-/* Envelope front */
+/* front */
 
 .envelope-front {
-    position: absolute;
+    z-index: 3;
 
-    left: 0;
-    right: 0;
-    bottom: 0;
-
-    height: 58%;
-
-    background: #d4c5bf;
-
-    clip-path:
-        polygon(
-            0 0,
-            50% 58%,
-            100% 0,
-            100% 100%,
-            0 100%
-        );
-
-    z-index: 4;
+    clip-path: polygon(
+        0 0,
+        50% 55%,
+        100% 0,
+        100% 100%,
+        0 100%
+    );
 }
 
 
-/* Envelope flap */
+/* flap */
 
 .envelope-flap {
     position: absolute;
@@ -361,315 +353,233 @@ body {
     left: 0;
 
     width: 100%;
-    height: 62%;
+    height: 65%;
 
-    background: #dfd1cb;
+    background: #321C25;
 
-    clip-path:
-        polygon(
-            0 0,
-            100% 0,
-            50% 75%
-        );
+    border: 1px solid #7B4658;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        50% 100%
+    );
 
     transform-origin: top center;
 
-    transition:
-        transform 0.9s ease;
-
     z-index: 5;
+
+    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
-/* =========================================
+/* ================================
    SEAL
-========================================= */
+================================ */
 
 .seal {
     position: absolute;
 
     left: 50%;
-    top: 48%;
+    top: 50%;
 
-    transform:
-        translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
 
     width: 58px;
     height: 58px;
 
     border-radius: 50%;
 
-    background: var(--pink-dark);
+    border: 1px solid #D7B5BE;
 
-    color: var(--pink-light);
+    background: #6E394A;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: #EEE5E8;
 
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
 
-    font-size: 17px;
-
-    z-index: 6;
-
-    box-shadow:
-        0 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
 
     transition:
-        opacity 0.4s ease,
-        transform 0.4s ease;
+        transform 0.4s ease,
+        background 0.4s ease;
+}
+
+.seal:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+
+    background: #8C5062;
 }
 
 
-/* =========================================
-   OPEN ENVELOPE
-========================================= */
+/* hint */
+
+.open-hint {
+    margin-top: 2rem;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 0.58rem;
+
+    letter-spacing: 0.25rem;
+
+    text-transform: uppercase;
+
+    color: #6E394A;
+}
+
+
+/* ================================
+   LETTER
+================================ */
+
+#letter-screen {
+    position: absolute;
+
+    height: auto;
+    min-height: 100vh;
+
+    padding: 7rem 1.5rem;
+
+    align-items: flex-start;
+
+    overflow-y: auto;
+
+    background:
+        radial-gradient(
+            circle at top center,
+            rgba(110, 57, 74, 0.12),
+            transparent 40%
+        ),
+        #0B090C;
+}
+
+
+/* digital letter */
+
+.letter {
+    width: min(720px, 100%);
+
+    padding: 4rem clamp(1.8rem, 7vw, 5rem);
+
+    border-left: 1px solid rgba(183, 131, 145, 0.25);
+    border-right: 1px solid rgba(183, 131, 145, 0.25);
+
+    color: #E8DEE1;
+
+    font-size: 1rem;
+
+    line-height: 2;
+
+    animation: letterAppear 1.5s ease forwards;
+}
+
+
+/* paragraphs */
+
+.letter p {
+    margin-bottom: 2rem;
+}
+
+
+/* final name */
+
+.letter-name {
+    color: #D7B5BE;
+
+    font-size: 1.3rem;
+
+    font-style: italic;
+
+    margin-top: 3rem;
+}
+
+
+/* signature */
+
+.signature {
+    color: #A8959C;
+
+    font-style: italic;
+
+    margin-top: 3rem;
+}
+
+
+/* ================================
+   ANIMATIONS
+================================ */
+
+@keyframes coverAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+@keyframes letterAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
+
+
+/* envelope opening */
 
 .envelope.open .envelope-flap {
     transform: rotateX(180deg);
 }
 
-.envelope.open .seal {
-    opacity: 0;
-
-    transform:
-        translate(-50%, -50%)
-        scale(0.7);
-}
-
-.envelope.open .letter-preview {
-    transform:
-        translateY(-120px);
+.envelope.open {
+    transform: translateY(-15px);
 }
 
 
-/* =========================================
-   ENVELOPE HINT
-========================================= */
-
-.envelope-hint {
-    margin-top: 45px;
-
-    border: none;
-
-    background: transparent;
-
-    color: var(--pink);
-
-    font-family: Arial, Helvetica, sans-serif;
-
-    text-transform: lowercase;
-
-    letter-spacing: 0.08em;
-
-    cursor: pointer;
-
-    opacity: 0.8;
-
-    transition:
-        opacity 0.3s ease;
-}
-
-.envelope-hint:hover {
-    opacity: 1;
-}
-
-
-/* =========================================
-   LETTER SCREEN
-========================================= */
-
-.letter-screen {
-    min-height: 100vh;
-
-    padding: 90px 20px;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #171218,
-            #0b090c 75%
-        );
-
-    position: relative;
-}
-
-
-/* =========================================
-   LETTER
-========================================= */
-
-.letter {
-    width: min(760px, 92vw);
-
-    margin: auto;
-
-    padding: 85px 90px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #eee4de,
-            #ded0ca
-        );
-
-    color: var(--ink);
-
-    position: relative;
-
-    box-shadow:
-        0 35px 100px rgba(0, 0, 0, 0.65);
-}
-
-
-/* =========================================
-   LETTER TYPOGRAPHY
-========================================= */
-
-.letter h1 {
-    font-size: clamp(30px, 4vw, 44px);
-
-    font-weight: normal;
-
-    font-style: italic;
-
-    margin-top: 55px;
-
-    margin-bottom: 55px;
-
-    position: relative;
-
-    z-index: 2;
-}
-
-.letter-body {
-    font-size: 18px;
-
-    line-height: 1.9;
-
-    position: relative;
-
-    z-index: 2;
-}
-
-.letter-body p {
-    margin-bottom: 28px;
-}
-
-.final-name {
-    margin-top: 55px;
-
-    font-size: 35px;
-
-    font-style: italic;
-
-    color: var(--pink-dark);
-}
-
-
-/* =========================================
-   SIGNATURE
-========================================= */
-
-.signature {
-    margin-top: 55px;
-
-    font-size: 19px;
-
-    font-style: italic;
-
-    position: relative;
-
-    z-index: 2;
-}
-
-
-/* =========================================
-   HIDDEN
-========================================= */
-
-.hidden {
-    display: none !important;
-}
-
-
-/* =========================================
-   TRANSITIONS
-========================================= */
-
-.fade-out {
-    opacity: 0 !important;
-
-    transform: scale(1.015);
-}
-
-.fade-in {
-    animation:
-        fadeIn 1.3s ease forwards;
-}
-
-@keyframes fadeIn {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-
-}
-
-
-/* =========================================
+/* ================================
    MOBILE
-========================================= */
+================================ */
 
 @media (max-width: 600px) {
 
-    .paper-cover {
-        width: 90vw;
-
-        min-height: 80vh;
-
-        padding: 45px 35px;
+    .cover-content h1 {
+        font-size: 2.8rem;
     }
 
-    .cover-content {
-        margin-top: 75px;
+    .cover-name {
+        letter-spacing: 0.45rem;
     }
 
-    .opening-text {
-        font-size: 16px;
-
-        line-height: 1.8;
+    .cover-subtitle {
+        font-size: 0.68rem;
     }
 
-    .envelope {
-        width: 340px;
-
-        height: 225px;
-    }
-
-    .letter-preview {
-        height: 195px;
+    .envelope-intro {
+        text-align: center;
+        width: 90%;
     }
 
     .letter {
-        padding: 55px 35px;
-    }
+        padding: 3rem 1.5rem;
 
-    .letter-body {
-        font-size: 16px;
-
-        line-height: 1.8;
+        font-size: 0.95rem;
     }
 
 }
