@@ -1,6 +1,6 @@
-/* ================================
+/* =================================
    GENERAL
-================================ */
+================================= */
 
 * {
     box-sizing: border-box;
@@ -17,14 +17,16 @@ body {
 body {
     background: #0B090C;
     color: #EEE5E8;
+
     font-family: Georgia, "Times New Roman", serif;
+
     overflow-x: hidden;
 }
 
 
-/* ================================
+/* =================================
    SCREEN SYSTEM
-================================ */
+================================= */
 
 .screen {
     position: fixed;
@@ -51,11 +53,13 @@ body {
 }
 
 
-/* ================================
+/* =================================
    COVER
-================================ */
+================================= */
 
 #cover {
+    position: relative;
+
     background:
         radial-gradient(
             circle at 50% 45%,
@@ -63,8 +67,6 @@ body {
             transparent 38%
         ),
         #0B090C;
-
-    position: relative;
 }
 
 
@@ -72,6 +74,7 @@ body {
 
 #cover::before {
     content: "";
+
     position: absolute;
     inset: 0;
 
@@ -84,15 +87,15 @@ body {
             circle at 0 0,
             transparent 0,
             transparent 1px,
-            rgba(255,255,255,0.15) 1px,
-            rgba(255,255,255,0.15) 2px
+            rgba(255, 255, 255, 0.15) 1px,
+            rgba(255, 255, 255, 0.15) 2px
         );
 
     background-size: 5px 5px;
 }
 
 
-/* small atmospheric glow */
+/* subtle pink glow */
 
 #cover::after {
     content: "";
@@ -112,9 +115,9 @@ body {
 }
 
 
-/* ================================
+/* =================================
    COVER CONTENT
-================================ */
+================================= */
 
 .cover-content {
     position: relative;
@@ -132,43 +135,85 @@ body {
 }
 
 
-/* ISLA */
+/* =================================
+   "FOR"
+================================= */
 
-.cover-name {
+.cover-for {
     font-family: Arial, Helvetica, sans-serif;
 
-    font-size: 0.72rem;
+    font-size: 0.58rem;
 
-    letter-spacing: 0.65rem;
+    letter-spacing: 0.32rem;
 
-    margin-left: 0.65rem;
+    text-transform: lowercase;
 
-    color: #D7B5BE;
+    color: #A8959C;
 
-    opacity: 0.8;
+    opacity: 0.75;
 
-    margin-bottom: 2rem;
+    margin-bottom: 0.7rem;
 }
 
 
-/* a love letter */
+/* =================================
+   ISLA
+================================= */
 
-.cover-content h1 {
-    font-size: clamp(2.8rem, 7vw, 5.8rem);
+.cover-name {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(4.2rem, 10vw, 7.5rem);
 
     font-weight: 400;
 
-    letter-spacing: -0.04em;
+    font-style: normal;
+
+    letter-spacing: 0.12rem;
+
+    line-height: 0.9;
+
+    color: #EEE5E8;
+
+    margin-bottom: 1.8rem;
+
+    text-shadow:
+        0 0 30px rgba(183, 131, 145, 0.08);
+}
+
+
+/* =================================
+   A LOVE LETTER
+================================= */
+
+.cover-content h1 {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+
+    font-weight: 400;
+
+    font-style: italic;
+
+    letter-spacing: 0.02em;
 
     line-height: 1;
 
     color: #EEE5E8;
 
-    margin-bottom: 2.2rem;
+    margin-bottom: 2.6rem;
 }
 
 
-/* My story between your fingers. */
+/* =================================
+   MAIN PHRASE
+================================= */
 
 .cover-main {
     font-size: clamp(1.15rem, 2vw, 1.5rem);
@@ -181,7 +226,9 @@ body {
 }
 
 
-/* Every word... */
+/* =================================
+   SUBTITLE
+================================= */
 
 .cover-subtitle {
     font-family: Arial, Helvetica, sans-serif;
@@ -198,9 +245,9 @@ body {
 }
 
 
-/* ================================
+/* =================================
    ENTER BUTTON
-================================ */
+================================= */
 
 #enter-button {
     border: 1px solid rgba(215, 181, 190, 0.45);
@@ -237,7 +284,9 @@ body {
 }
 
 
-/* date */
+/* =================================
+   DATE
+================================= */
 
 .cover-date {
     position: absolute;
@@ -254,9 +303,9 @@ body {
 }
 
 
-/* ================================
+/* =================================
    ENVELOPE SCREEN
-================================ */
+================================= */
 
 #envelope-screen {
     flex-direction: column;
@@ -271,7 +320,9 @@ body {
 }
 
 
-/* intro */
+/* =================================
+   ENVELOPE INTRO
+================================= */
 
 .envelope-intro {
     position: absolute;
@@ -290,9 +341,9 @@ body {
 }
 
 
-/* ================================
+/* =================================
    ENVELOPE
-================================ */
+================================= */
 
 .envelope {
     position: relative;
@@ -303,9 +354,10 @@ body {
 
     cursor: pointer;
 
-    filter: drop-shadow(
-        0 25px 50px rgba(0, 0, 0, 0.55)
-    );
+    filter:
+        drop-shadow(
+            0 25px 50px rgba(0, 0, 0, 0.55)
+        );
 
     transition: transform 0.6s ease;
 }
@@ -344,7 +396,9 @@ body {
 }
 
 
-/* flap */
+/* =================================
+   ENVELOPE FLAP
+================================= */
 
 .envelope-flap {
     position: absolute;
@@ -369,13 +423,14 @@ body {
 
     z-index: 5;
 
-    transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    transition:
+        transform 1s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
-/* ================================
-   SEAL
-================================ */
+/* =================================
+   HEART SEAL
+================================= */
 
 .seal {
     position: absolute;
@@ -408,13 +463,17 @@ body {
 }
 
 .seal:hover {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform:
+        translate(-50%, -50%)
+        scale(1.1);
 
     background: #8C5062;
 }
 
 
-/* hint */
+/* =================================
+   OPEN HINT
+================================= */
 
 .open-hint {
     margin-top: 2rem;
@@ -431,9 +490,9 @@ body {
 }
 
 
-/* ================================
-   LETTER
-================================ */
+/* =================================
+   LETTER SCREEN
+================================= */
 
 #letter-screen {
     position: absolute;
@@ -457,15 +516,22 @@ body {
 }
 
 
-/* digital letter */
+/* =================================
+   LETTER
+================================= */
 
 .letter {
     width: min(720px, 100%);
 
-    padding: 4rem clamp(1.8rem, 7vw, 5rem);
+    padding:
+        4rem
+        clamp(1.8rem, 7vw, 5rem);
 
-    border-left: 1px solid rgba(183, 131, 145, 0.25);
-    border-right: 1px solid rgba(183, 131, 145, 0.25);
+    border-left:
+        1px solid rgba(183, 131, 145, 0.25);
+
+    border-right:
+        1px solid rgba(183, 131, 145, 0.25);
 
     color: #E8DEE1;
 
@@ -473,7 +539,8 @@ body {
 
     line-height: 2;
 
-    animation: letterAppear 1.5s ease forwards;
+    animation:
+        letterAppear 1.5s ease forwards;
 }
 
 
@@ -508,20 +575,24 @@ body {
 }
 
 
-/* ================================
+/* =================================
    ANIMATIONS
-================================ */
+================================= */
 
 @keyframes coverAppear {
 
     from {
         opacity: 0;
-        transform: translateY(18px);
+
+        transform:
+            translateY(18px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 
 }
@@ -531,40 +602,54 @@ body {
 
     from {
         opacity: 0;
-        transform: translateY(25px);
+
+        transform:
+            translateY(25px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 
 }
 
 
-/* envelope opening */
+/* =================================
+   ENVELOPE OPENING
+================================= */
 
 .envelope.open .envelope-flap {
-    transform: rotateX(180deg);
+    transform:
+        rotateX(180deg);
 }
 
 .envelope.open {
-    transform: translateY(-15px);
+    transform:
+        translateY(-15px);
 }
 
 
-/* ================================
+/* =================================
    MOBILE
-================================ */
+================================= */
 
 @media (max-width: 600px) {
 
     .cover-content h1 {
-        font-size: 2.8rem;
+        font-size: 2rem;
     }
 
     .cover-name {
-        letter-spacing: 0.45rem;
+        font-size: 4.2rem;
+
+        letter-spacing: 0.08rem;
+    }
+
+    .cover-for {
+        font-size: 0.52rem;
     }
 
     .cover-subtitle {
@@ -573,11 +658,14 @@ body {
 
     .envelope-intro {
         text-align: center;
+
         width: 90%;
     }
 
     .letter {
-        padding: 3rem 1.5rem;
+        padding:
+            3rem
+            1.5rem;
 
         font-size: 0.95rem;
     }
