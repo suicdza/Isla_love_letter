@@ -1,638 +1,675 @@
 /* =========================================
-   ISLA — YOU LOOK GOOD IN PINK
-   Main stylesheet
+   VARIABLES
 ========================================= */
 
+:root {
+    --black: #0b090c;
+    --black-soft: #121015;
 
-/* ---------- GLOBAL ---------- */
+    --paper: #e8ded8;
+    --paper-dark: #d8cbc5;
+    --ink: #241e21;
+
+    --pink-dark: #6e394a;
+    --pink: #b78391;
+    --pink-light: #d7b5be;
+
+    --white: #eee5e8;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
 
 * {
     box-sizing: border-box;
-}
-
-
-html,
-body {
     margin: 0;
     padding: 0;
-
-    width: 100%;
-    min-height: 100%;
-
-    background: #0b090c;
-
-    color: #eee5e8;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
 body {
-    overflow: hidden;
+    min-height: 100vh;
+
+    background: var(--black);
+    color: var(--white);
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    overflow-x: hidden;
 }
 
 
-/* ---------- COLORS ---------- */
-
-:root {
-
-    --black:
-        #0b090c;
-
-    --dark-pink:
-        #6e394a;
-
-    --dusty-pink:
-        #b78391;
-
-    --light-pink:
-        #d7b5be;
-
-    --paper:
-        #e8ded8;
-
-    --text:
-        #eee5e8;
-}
-
-
-/* ---------- SCREEN ---------- */
+/* =========================================
+   GLOBAL SCREEN
+========================================= */
 
 .screen {
-
-    width: 100vw;
-
-    height: 100vh;
+    min-height: 100vh;
 
     display: flex;
-
+    align-items: center;
     justify-content: center;
 
-    align-items: center;
+    position: relative;
+}
+
+
+/* =========================================
+   COVER
+========================================= */
+
+#cover {
+    background:
+        radial-gradient(
+            circle at center,
+            #171218 0%,
+            #0b090c 65%,
+            #08070a 100%
+        );
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s ease;
+}
+
+.paper-cover {
+    width: min(720px, 88vw);
+    min-height: 720px;
+
+    padding: 75px 80px;
+
+    background:
+        linear-gradient(
+            rgba(232, 222, 216, 0.98),
+            rgba(224, 212, 206, 0.98)
+        );
+
+    color: var(--ink);
 
     position: relative;
+
+    box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.65);
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================
+   PAPER TEXTURE
+========================================= */
+
+.paper-cover::before,
+.letter::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.08;
+
+    pointer-events: none;
+
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 3px,
+            rgba(80, 50, 55, 0.3) 4px
+        );
+}
+
+
+/* =========================================
+   DATE
+========================================= */
+
+.date,
+.letter-date {
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 10px;
+
+    letter-spacing: 0.28em;
+
+    color: #76676b;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================
+   COVER CONTENT
+========================================= */
+
+.cover-content {
+    margin-top: 115px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.salutation {
+    font-size: clamp(28px, 4vw, 40px);
+
+    font-style: italic;
+
+    margin-bottom: 55px;
+}
+
+.opening-text {
+    max-width: 480px;
+
+    font-size: clamp(17px, 2vw, 21px);
+
+    line-height: 1.9;
+
+    color: #332b2e;
+}
+
+.opening-text p {
+    margin-bottom: 22px;
+}
+
+
+/* =========================================
+   OPEN LETTER BUTTON
+========================================= */
+
+.open-link {
+    margin-top: auto;
+
+    align-self: flex-start;
+
+    border: none;
+
+    background: transparent;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 15px;
+
+    color: var(--pink-dark);
+
+    cursor: pointer;
+
+    padding: 8px 0;
+
+    transition:
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.open-link span {
+    display: inline-block;
+
+    margin-left: 8px;
+
+    transition:
+        transform 0.3s ease;
+}
+
+.open-link:hover {
+    color: #43212d;
+}
+
+.open-link:hover span {
+    transform: translateX(6px);
+}
+
+
+/* =========================================
+   ENVELOPE SCREEN
+========================================= */
+
+#envelope-screen {
+    min-height: 100vh;
+
+    flex-direction: column;
 
     background:
         radial-gradient(
             circle at center,
-            #211820 0%,
+            #171218,
             #0b090c 70%
         );
 
-}
-
-
-/* ---------- LANDING ---------- */
-
-.landing-content {
-
-    text-align: center;
-
-    width: min(90%, 700px);
-
-    animation:
-        fadeIn 2s ease forwards;
-
-}
-
-
-.small-date {
-
-    font-size: 11px;
-
-    letter-spacing: 5px;
-
-    opacity: 0.45;
-
-    margin-bottom: 35px;
-
-}
-
-
-h1 {
-
-    margin: 0;
-
-    font-size:
-        clamp(65px, 12vw, 150px);
-
-    font-weight: normal;
-
-    letter-spacing: 18px;
-
-    margin-left: 18px;
-
-    color:
-        var(--light-pink);
-
-    text-shadow:
-        0 0 35px
-        rgba(183, 131, 145, 0.15);
-
-}
-
-
-.album-title {
-
-    margin-top: 12px;
-
-    font-size: 13px;
-
-    letter-spacing: 6px;
-
-    color:
-        var(--dusty-pink);
-
-    opacity: 0.85;
-
-}
-
-
-.divider {
-
-    width: 90px;
-
-    height: 1px;
-
-    background:
-        var(--dark-pink);
-
-    margin:
-        35px auto;
-
-}
-
-
-.description {
-
-    max-width: 430px;
-
-    margin:
-        0 auto 45px;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    letter-spacing: 0.5px;
-
-    opacity: 0.55;
-
-}
-
-
-/* ---------- ENTER BUTTON ---------- */
-
-.enter-button {
-
-    background: transparent;
-
-    border: 1px solid
-        rgba(183, 131, 145, 0.45);
-
-    color:
-        var(--light-pink);
-
-    padding:
-        13px 32px;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 11px;
-
-    letter-spacing: 4px;
-
-    cursor: pointer;
+    opacity: 1;
 
     transition:
-        all 0.4s ease;
-
+        opacity 1s ease;
 }
 
+.envelope-introduction {
+    margin-bottom: 45px;
 
-.enter-button:hover {
+    font-size: 18px;
 
-    background:
-        rgba(183, 131, 145, 0.08);
+    font-style: italic;
 
-    border-color:
-        var(--dusty-pink);
-
-    box-shadow:
-        0 0 25px
-        rgba(183, 131, 145, 0.12);
-
-    transform:
-        translateY(-3px);
-
+    color: var(--paper);
 }
 
-
-/* ---------- LETTER SCREEN ---------- */
-
-.hidden {
-
-    display: none;
-
-}
-
-
-.letter-content {
-
-    text-align: center;
-
-    width: 100%;
-
-}
-
-
-.letter-intro {
-
-    font-size: 13px;
-
-    letter-spacing: 3px;
-
-    opacity: 0.55;
-
-    margin-bottom: 40px;
-
-}
-
-
-/* ---------- ENVELOPE ---------- */
-
-.envelope-container {
-
-    position: relative;
-
-    width: 360px;
-
-    height: 240px;
-
-    margin: auto;
-
+.envelope-wrapper {
     cursor: pointer;
 
-    transition:
-        transform 0.4s ease;
-
+    perspective: 1200px;
 }
 
 
-.envelope-container:hover {
-
-    transform:
-        translateY(-6px);
-
-}
-
+/* =========================================
+   ENVELOPE
+========================================= */
 
 .envelope {
+    width: 430px;
+    height: 285px;
 
     position: relative;
 
-    width: 100%;
-
-    height: 100%;
-
-    background:
-        #21161d;
-
-    border:
-        1px solid #5a414c;
-
-    box-shadow:
-        0 25px 70px
-        rgba(0, 0, 0, 0.6);
-
-    overflow: visible;
-
-}
-
-
-/* ---------- ENVELOPE FRONT ---------- */
-
-.envelope::after {
-
-    content: "";
-
-    position: absolute;
-
-    bottom: 0;
-
-    left: 0;
-
-    width: 0;
-
-    height: 0;
-
-    border-left:
-        180px solid transparent;
-
-    border-right:
-        180px solid transparent;
-
-    border-bottom:
-        125px solid #2c1c25;
-
-    z-index: 3;
-
-}
-
-
-/* ---------- FLAP ---------- */
-
-.flap {
-
-    position: absolute;
-
-    top: 0;
-
-    left: 0;
-
-    width: 0;
-
-    height: 0;
-
-    border-left:
-        180px solid transparent;
-
-    border-right:
-        180px solid transparent;
-
-    border-top:
-        125px solid #39232e;
-
-    transform-origin:
-        top center;
+    transform-style: preserve-3d;
 
     transition:
         transform 1s ease;
 
-    z-index: 5;
-
+    filter:
+        drop-shadow(
+            0 30px 40px rgba(0, 0, 0, 0.55)
+        );
 }
 
 
-/* ---------- LETTER ---------- */
+/* Envelope back */
 
-.letter {
-
+.envelope-back {
     position: absolute;
 
-    width: 85%;
+    inset: 0;
 
-    height: 80%;
+    background: var(--paper-dark);
 
-    background:
-        var(--paper);
+    border-radius: 3px;
 
-    color:
-        #251c20;
+    z-index: 1;
+}
 
-    left: 7.5%;
 
-    top: 12%;
+/* Letter inside envelope */
 
-    padding: 30px;
+.letter-preview {
+    position: absolute;
 
-    box-shadow:
-        0 10px 30px
-        rgba(0, 0, 0, 0.35);
+    width: 90%;
+    height: 245px;
 
-    transform:
-        translateY(40px);
+    left: 5%;
+    top: 10px;
 
-    transition:
-        transform 1s ease,
-        opacity 0.7s ease;
+    background: var(--paper);
 
-    opacity: 0;
+    color: var(--ink);
 
     z-index: 2;
 
+    padding: 30px;
+
+    font-size: 17px;
+
+    transition:
+        transform 1s ease;
 }
 
 
-.letter h2 {
+/* Envelope front */
 
-    margin-top: 5px;
-
-    font-weight: normal;
-
-    letter-spacing: 3px;
-
-}
-
-
-.letter p {
-
-    font-size: 13px;
-
-    line-height: 1.7;
-
-    opacity: 0.75;
-
-}
-
-
-/* ---------- SEAL ---------- */
-
-.seal {
-
+.envelope-front {
     position: absolute;
 
-    width: 58px;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-    height: 58px;
+    height: 58%;
 
-    border-radius: 50%;
+    background: #d4c5bf;
 
-    background:
-        var(--dark-pink);
+    clip-path:
+        polygon(
+            0 0,
+            50% 58%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
 
-    border:
-        2px solid
-        var(--dusty-pink);
+    z-index: 4;
+}
 
-    color:
-        var(--light-pink);
 
-    display: flex;
+/* Envelope flap */
 
-    align-items: center;
+.envelope-flap {
+    position: absolute;
 
-    justify-content: center;
+    top: 0;
+    left: 0;
 
-    font-size: 20px;
+    width: 100%;
+    height: 62%;
+
+    background: #dfd1cb;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 75%
+        );
+
+    transform-origin: top center;
+
+    transition:
+        transform 0.9s ease;
+
+    z-index: 5;
+}
+
+
+/* =========================================
+   SEAL
+========================================= */
+
+.seal {
+    position: absolute;
 
     left: 50%;
-
-    top: 50%;
+    top: 48%;
 
     transform:
         translate(-50%, -50%);
 
-    z-index: 10;
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    background: var(--pink-dark);
+
+    color: var(--pink-light);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 17px;
+
+    z-index: 6;
 
     box-shadow:
-        0 5px 20px
-        rgba(0, 0, 0, 0.4);
+        0 5px 15px rgba(0, 0, 0, 0.3);
 
     transition:
-        transform 0.6s ease,
-        opacity 0.5s ease;
-
+        opacity 0.4s ease,
+        transform 0.4s ease;
 }
 
 
-/* ---------- OPEN TEXT ---------- */
+/* =========================================
+   OPEN ENVELOPE
+========================================= */
 
-.open-text {
-
-    margin-top: 35px;
-
-    font-size: 11px;
-
-    letter-spacing: 4px;
-
-    opacity: 0.4;
-
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
 }
 
-
-/* ---------- OPEN ENVELOPE ---------- */
-
-.open .flap {
-
-    transform:
-        rotateX(180deg);
-
-}
-
-
-.open .letter {
-
-    transform:
-        translateY(-90px);
-
-    opacity: 1;
-
-    z-index: 8;
-
-}
-
-
-.open .seal {
+.envelope.open .seal {
+    opacity: 0;
 
     transform:
         translate(-50%, -50%)
-        scale(1.3);
+        scale(0.7);
+}
 
-    opacity: 0;
-
+.envelope.open .letter-preview {
+    transform:
+        translateY(-120px);
 }
 
 
-/* ---------- ANIMATIONS ---------- */
+/* =========================================
+   ENVELOPE HINT
+========================================= */
+
+.envelope-hint {
+    margin-top: 45px;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--pink);
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    text-transform: lowercase;
+
+    letter-spacing: 0.08em;
+
+    cursor: pointer;
+
+    opacity: 0.8;
+
+    transition:
+        opacity 0.3s ease;
+}
+
+.envelope-hint:hover {
+    opacity: 1;
+}
+
+
+/* =========================================
+   LETTER SCREEN
+========================================= */
+
+.letter-screen {
+    min-height: 100vh;
+
+    padding: 90px 20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #171218,
+            #0b090c 75%
+        );
+
+    position: relative;
+}
+
+
+/* =========================================
+   LETTER
+========================================= */
+
+.letter {
+    width: min(760px, 92vw);
+
+    margin: auto;
+
+    padding: 85px 90px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eee4de,
+            #ded0ca
+        );
+
+    color: var(--ink);
+
+    position: relative;
+
+    box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.65);
+}
+
+
+/* =========================================
+   LETTER TYPOGRAPHY
+========================================= */
+
+.letter h1 {
+    font-size: clamp(30px, 4vw, 44px);
+
+    font-weight: normal;
+
+    font-style: italic;
+
+    margin-top: 55px;
+
+    margin-bottom: 55px;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.letter-body {
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.letter-body p {
+    margin-bottom: 28px;
+}
+
+.final-name {
+    margin-top: 55px;
+
+    font-size: 35px;
+
+    font-style: italic;
+
+    color: var(--pink-dark);
+}
+
+
+/* =========================================
+   SIGNATURE
+========================================= */
+
+.signature {
+    margin-top: 55px;
+
+    font-size: 19px;
+
+    font-style: italic;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================
+   HIDDEN
+========================================= */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================
+   TRANSITIONS
+========================================= */
+
+.fade-out {
+    opacity: 0 !important;
+
+    transform: scale(1.015);
+}
+
+.fade-in {
+    animation:
+        fadeIn 1.3s ease forwards;
+}
 
 @keyframes fadeIn {
 
     from {
-
         opacity: 0;
 
         transform:
             translateY(15px);
-
     }
 
     to {
-
         opacity: 1;
 
         transform:
             translateY(0);
-
     }
 
 }
 
 
-/* ---------- MOBILE ---------- */
+/* =========================================
+   MOBILE
+========================================= */
 
 @media (max-width: 600px) {
 
-    h1 {
+    .paper-cover {
+        width: 90vw;
 
-        font-size: 65px;
+        min-height: 80vh;
 
-        letter-spacing: 10px;
-
-        margin-left: 10px;
-
+        padding: 45px 35px;
     }
 
-
-    .album-title {
-
-        font-size: 10px;
-
-        letter-spacing: 4px;
-
+    .cover-content {
+        margin-top: 75px;
     }
 
+    .opening-text {
+        font-size: 16px;
 
-    .description {
-
-        font-size: 14px;
-
-        padding:
-            0 25px;
-
+        line-height: 1.8;
     }
 
+    .envelope {
+        width: 340px;
 
-    .envelope-container {
-
-        width: 300px;
-
-        height: 200px;
-
+        height: 225px;
     }
 
-
-    .envelope::after {
-
-        border-left-width:
-            150px;
-
-        border-right-width:
-            150px;
-
-        border-bottom-width:
-            105px;
-
+    .letter-preview {
+        height: 195px;
     }
 
+    .letter {
+        padding: 55px 35px;
+    }
 
-    .flap {
+    .letter-body {
+        font-size: 16px;
 
-        border-left-width:
-            150px;
-
-        border-right-width:
-            150px;
-
-        border-top-width:
-            105px;
-
+        line-height: 1.8;
     }
 
 }
