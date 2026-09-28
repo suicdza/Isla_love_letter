@@ -1,66 +1,89 @@
 /* =========================================
-   ISLA — YOU LOOK GOOD IN PINK
-   Main JavaScript
+   COVER → ENVELOPE
 ========================================= */
 
+function showEnvelope() {
 
-/* ---------- ENTER SITE ---------- */
+    const cover =
+        document.getElementById("cover");
 
-function enterSite() {
+    const envelopeScreen =
+        document.getElementById("envelope-screen");
 
-    const landing =
-        document.getElementById("landing");
+    cover.classList.add("fade-out");
 
-    const letterScreen =
-        document.getElementById("letter-screen");
+    setTimeout(() => {
 
+        cover.classList.add("hidden");
+
+        envelopeScreen.classList.remove("hidden");
+
+        envelopeScreen.classList.add("fade-in");
+
+    }, 1000);
+}
+
+
+/* =========================================
+   OPEN ENVELOPE
+========================================= */
+
+function openEnvelope() {
+
+    const envelope =
+        document.querySelector(".envelope");
 
     /*
-        Fade out the landing page
+        Prevents the envelope from being
+        triggered repeatedly.
     */
 
-    landing.style.transition =
-        "opacity 1.2s ease";
+    if (envelope.classList.contains("open")) {
+        return;
+    }
 
-
-    landing.style.opacity = "0";
-
+    envelope.classList.add("open");
 
     /*
-        Wait for the fade to finish
+        Give the envelope animation
+        enough time to finish before
+        revealing the letter.
     */
 
     setTimeout(() => {
 
-        landing.classList.add("hidden");
+        showLetter();
 
-        letterScreen.classList.remove("hidden");
-
-        letterScreen.style.opacity = "0";
-
-        requestAnimationFrame(() => {
-
-            letterScreen.style.transition =
-                "opacity 1.2s ease";
-
-            letterScreen.style.opacity = "1";
-
-        });
-
-    }, 1200);
-
+    }, 1700);
 }
 
 
+/* =========================================
+   ENVELOPE → LETTER
+========================================= */
 
-/* ---------- OPEN LETTER ---------- */
+function showLetter() {
 
-function openLetter() {
+    const envelopeScreen =
+        document.getElementById("envelope-screen");
 
-    const envelope =
-        document.getElementById("envelope");
+    const letterScreen =
+        document.getElementById("letter-screen");
 
+    envelopeScreen.classList.add("fade-out");
 
-    envelope.classList.toggle("open");
+    setTimeout(() => {
 
+        envelopeScreen.classList.add("hidden");
+
+        letterScreen.classList.remove("hidden");
+
+        letterScreen.classList.add("fade-in");
+
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
+
+    }, 1000);
 }
