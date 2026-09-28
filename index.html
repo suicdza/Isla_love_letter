@@ -4,230 +4,175 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>For Isla</title>
+    <title>ISLA — a love letter</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <!-- =========================
-         COVER
-    ========================== -->
+    <!-- COVER -->
+    <section id="cover" class="screen active">
 
-    <main id="cover" class="screen">
+        <div class="cover-content">
 
-        <div class="paper-cover">
+            <p class="cover-name">ISLA</p>
 
-            <div class="date">
-                March 3, 2027
-            </div>
+            <h1>a love letter</h1>
 
-            <div class="cover-content">
-
-                <p class="salutation">
-                    For Isla,
-                </p>
-
-                <div class="opening-text">
-
-                    <p>
-                        I wish there were a script for me to follow
-                        when trying to express myself.
-                    </p>
-
-                    <p>
-                        Even if there were, it would never come close
-                        to describing just how perfect you are.
-                    </p>
-
-                    <p>
-                        I don't know what I'm doing.
-                    </p>
-
-                    <p>
-                        Really.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <button class="open-link" onclick="showEnvelope()">
-                open letter
-                <span>→</span>
-            </button>
-
-        </div>
-
-    </main>
-
-
-    <!-- =========================
-         ENVELOPE
-    ========================== -->
-
-    <section id="envelope-screen" class="screen hidden">
-
-        <div class="envelope-introduction">
-
-            <p>
-                there is something I want to show you.
+            <p class="cover-main">
+                My story between your fingers.
             </p>
 
-        </div>
+            <p class="cover-subtitle">
+                Every word, every memory,<br>
+                every little piece of this<br>
+                was made with you in mind.
+            </p>
 
-        <div class="envelope-wrapper" onclick="openEnvelope()">
+            <button id="enter-button">
+                ENTER
+            </button>
 
-            <div class="envelope">
-
-                <div class="envelope-back"></div>
-
-                <div class="letter-preview">
-                    <span>For Isla,</span>
-                </div>
-
-                <div class="envelope-front"></div>
-
-                <div class="envelope-flap"></div>
-
-                <div class="seal">
-                    &lt;3
-                </div>
-
-            </div>
+            <p class="cover-date">03 · 03 · 2027</p>
 
         </div>
-
-        <button class="envelope-hint" onclick="openEnvelope()">
-            open
-        </button>
 
     </section>
 
 
-    <!-- =========================
-         LETTER
-    ========================== -->
+    <!-- ENVELOPE -->
+    <section id="envelope-screen" class="screen">
 
-    <section id="letter-screen" class="letter-screen hidden">
+        <div class="envelope-intro">
+            <p>there is something I want to show you.</p>
+        </div>
+
+        <div id="envelope" class="envelope">
+
+            <div class="envelope-back"></div>
+
+            <div class="envelope-flap"></div>
+
+            <div class="envelope-front"></div>
+
+            <button id="seal" class="seal" aria-label="Open the letter">
+                ❤︎
+            </button>
+
+        </div>
+
+        <p class="open-hint">open it.</p>
+
+    </section>
+
+
+    <!-- LETTER -->
+    <section id="letter-screen" class="screen">
 
         <article class="letter">
 
-            <div class="letter-date">
-                March 3, 2027
-            </div>
+            <p>For Isla,</p>
 
-            <h1>
-                For Isla,
-            </h1>
+            <p>
+                I wish there were a script for me to follow when trying
+                to express myself.
+            </p>
 
-            <div class="letter-body">
+            <p>
+                Even if there were, it would never come close to
+                describing just how perfect you are.
+            </p>
 
-                <p>
-                    I wish there were a script for me to follow
-                    when trying to express myself.
-                </p>
+            <p>
+                I don't know what I'm doing.
+            </p>
 
-                <p>
-                    Even if there were, it would never come close
-                    to describing just how perfect you are.
-                </p>
+            <p>
+                Really.
+            </p>
 
-                <p>
-                    I don't know what I'm doing.
-                </p>
+            <p>
+                Sometimes words simply aren't enough to convey just
+                how much you can feel for someone.
+            </p>
 
-                <p>
-                    Really.
-                </p>
+            <p>
+                That's me.
+            </p>
 
-                <p>
-                    Sometimes words simply aren't enough to convey
-                    just how much you can feel for someone.
-                </p>
+            <p>
+                If it were up to me, I wouldn't hesitate to hand you
+                this letter in person, if I ever had the chance.
+            </p>
 
-                <p>
-                    That's me.
-                </p>
+            <p>
+                But that would somehow limit what I wanted this to be,
+                no matter how traditional or novel-like it might have been.
+            </p>
 
-                <p>
-                    If it were up to me, I wouldn't hesitate to hand
-                    you this letter in person, if I ever had the chance.
-                </p>
+            <p>
+                So I tried this instead. &lt;3
+            </p>
 
-                <p>
-                    But that would somehow limit what I wanted this to be,
-                    no matter how traditional or novel-like it might have been.
-                </p>
+            <p>
+                I didn't want to limit myself to simply writing down
+                how I feel about you.
+            </p>
 
-                <p>
-                    So I tried this instead. &lt;3
-                </p>
+            <p>
+                I wanted to leave you something you could slowly
+                make your way through.
+            </p>
 
-                <p>
-                    I didn't want to limit myself to simply writing down
-                    how I feel about you.
-                </p>
+            <p>
+                Something where our memories could remain, the songs
+                that remind me of you, the things I never found the
+                right moment to say, and all those little thoughts that
+                appear whenever there is an us.
+            </p>
 
-                <p>
-                    I wanted to leave you something you could slowly
-                    make your way through.
-                </p>
+            <p>
+                I don't know if this will be enough to explore everything
+                I want to tell you.
+            </p>
 
-                <p>
-                    Something where our memories could remain,
-                    the songs that remind me of you,
-                    the things I never found the right moment to say,
-                    and all those little thoughts that appear
-                    whenever there is an us.
-                </p>
+            <p>
+                Probably not.
+            </p>
 
-                <p>
-                    I don't know if this will be enough to explore
-                    everything I want to tell you.
-                </p>
+            <p>
+                But what I do hope is that it can show you just how much
+                you've come to mean to me since you appeared in my life.
+            </p>
 
-                <p>
-                    Probably not.
-                </p>
+            <p>
+                Because I haven't been the same since then.
+            </p>
 
-                <p>
-                    But what I do hope is that it can show you
-                    just how much you've come to mean to me
-                    since you appeared in my life.
-                </p>
+            <p>
+                So I'm giving this to you.
+            </p>
 
-                <p>
-                    Because I haven't been the same since then.
-                </p>
+            <p>
+                A little piece of me, made for you.
+            </p>
 
-                <p>
-                    So I'm giving this to you.
-                </p>
+            <p>
+                A little piece that constantly beats for you. &lt;3
+            </p>
 
-                <p>
-                    A little piece of me, made for you.
-                </p>
+            <p>
+                A little piece that bears your name.
+            </p>
 
-                <p>
-                    A little piece that constantly beats for you.
-                    &lt;3
-                </p>
+            <p class="letter-name">
+                Isla.
+            </p>
 
-                <p>
-                    A little piece that bears your name.
-                </p>
-
-                <p class="final-name">
-                    Isla.
-                </p>
-
-            </div>
-
-            <div class="signature">
+            <p class="signature">
                 — Daniel
-            </div>
+            </p>
 
         </article>
 
