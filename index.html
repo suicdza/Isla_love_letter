@@ -1,142 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <title>Para Isla</title>
 
-    <title>Isla — you look good in pink.</title>
-
-    <!-- Our stylesheet -->
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
     <!-- =========================
-         LANDING / COVER
+         PORTADA
     ========================== -->
 
-    <section id="landing" class="screen">
+    <main id="cover" class="screen">
 
-        <div class="landing-content">
+        <div class="paper-cover">
 
-            <p class="small-date">
+            <div class="date">
                 27 · 09 · 2026
-            </p>
+            </div>
 
+            <div class="cover-content">
 
-            <h1>
-                ISLA
-            </h1>
+                <p class="salutation">
+                    Para Isla,
+                </p>
 
+                <div class="opening-text">
 
-            <p class="album-title">
-                YOU LOOK GOOD IN PINK.
-            </p>
+                    <p>
+                        ojalá existiera un guion para poder expresarme.
+                    </p>
 
+                    <p>
+                        incluso si existiera, no se acercaría a describir
+                        con precisión lo perfecta que eres.
+                    </p>
 
-            <div class="divider"></div>
+                    <p>
+                        no sé lo que hago.
+                    </p>
 
-
-            <p class="description">
-                a little place where all my thoughts,
-                memories and feelings meet.
-            </p>
-
-
-            <button
-                class="enter-button"
-                onclick="enterSite()"
-            >
-
-                ENTER
-
-            </button>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =========================
-         LETTER / ENVELOPE
-    ========================== -->
-
-    <section
-        id="letter-screen"
-        class="screen hidden"
-    >
-
-        <div class="letter-content">
-
-            <p class="letter-intro">
-                I made something for you.
-            </p>
-
-
-            <div
-                class="envelope-container"
-                id="envelope"
-                onclick="openLetter()"
-            >
-
-                <div class="envelope">
-
-                    <!-- Letter -->
-
-                    <div class="letter">
-
-                        <h2>
-                            Isla
-                        </h2>
-
-                        <p>
-                            There is something I have
-                            been wanting to tell you.
-                        </p>
-
-                    </div>
-
-
-                    <!-- Envelope flap -->
-
-                    <div class="flap"></div>
-
-
-                    <!-- Wax seal -->
-
-                    <div class="seal">
-                        ♡
-                    </div>
+                    <p>
+                        de verdad.
+                    </p>
 
                 </div>
 
             </div>
 
+            <button class="open-link" onclick="showEnvelope()">
+                abrir carta
+                <span>→</span>
+            </button>
 
-            <p class="open-text">
-                open it.
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         SOBRE
+    ========================== -->
+
+    <section id="envelope-screen" class="screen hidden">
+
+        <div class="envelope-introduction">
+
+            <p>
+                hay algo que quiero enseñarte.
             </p>
 
         </div>
 
+        <div class="envelope-wrapper" onclick="openEnvelope()">
+
+            <div class="envelope">
+
+                <div class="envelope-back"></div>
+
+                <div class="letter-preview">
+                    <span>Para Isla,</span>
+                </div>
+
+                <div class="envelope-front"></div>
+
+                <div class="envelope-flap"></div>
+
+                <div class="seal">
+                    ♡
+                </div>
+
+            </div>
+
+        </div>
+
+        <button class="envelope-hint" onclick="openEnvelope()">
+            abrir
+        </button>
+
     </section>
 
 
+    <!-- =========================
+         CARTA
+    ========================== -->
 
-    <!-- Our JavaScript -->
+    <section id="letter-screen" class="letter-screen hidden">
+
+        <article class="letter">
+
+            <div class="letter-date">
+                27 · 09 · 2026
+            </div>
+
+            <h1>
+                Para Isla,
+            </h1>
+
+            <div class="letter-body">
+
+                <p>
+                    ojalá existiera un guion para poder expresarme.
+                </p>
+
+                <p>
+                    Incluso si existiera, no se acercaría a describir
+                    con precisión lo perfecta que eres.
+                </p>
+
+                <p>
+                    No sé lo que hago.
+                </p>
+
+                <p>
+                    De verdad.
+                </p>
+
+                <p>
+                    A veces las palabras no son suficientes para transmitir
+                    qué tanto puedes llegar a sentir hacia una persona.
+                </p>
+
+                <p>
+                    Ese soy yo.
+                </p>
+
+                <p>
+                    Si por mí fuese, no dudaría en entregarte mi carta
+                    en carne propia si tuviese la oportunidad.
+                </p>
+
+                <p>
+                    No obstante, eso sería limitar mi propuesta,
+                    por más conservador y novelesco que fuera.
+                </p>
+
+                <p>
+                    Por eso intenté esto. <span class="heart">♡</span>
+                </p>
+
+                <p>
+                    No quería restringirme a solo escribir lo que siento por ti.
+                </p>
+
+                <p>
+                    Quería dejarte algo que pudieras recorrer poco a poco.
+                </p>
+
+                <p>
+                    Algo en donde perduren nuestros recuerdos,
+                    las canciones que me recuerdan a ti,
+                    las cosas que nunca hallé el momento adecuado para decirte
+                    y todos esos pequeños pensamientos que aparecen
+                    cuando existe un nosotros.
+                </p>
+
+                <p>
+                    No sé si quizás esto consiga explorar todo lo que quiero decirte.
+                </p>
+
+                <p>
+                    Probablemente no.
+                </p>
+
+                <p>
+                    Pero lo que sí espero es transmitirte lo mucho que
+                    empezaste a importarme desde que apareciste en mi vida.
+                </p>
+
+                <p>
+                    Porque no he sido el mismo desde entonces.
+                </p>
+
+                <p>
+                    Por eso te entrego esto.
+                </p>
+
+                <p>
+                    Un pequeño pedazo de mí, hecho para ti.
+                </p>
+
+                <p>
+                    Un pequeño pedazo que late constantemente por ti.
+                    <span class="heart">♡</span>
+                </p>
+
+                <p>
+                    Un pequeño pedazo que tiene tu nombre.
+                </p>
+
+                <p class="final-name">
+                    Isla.
+                </p>
+
+            </div>
+
+            <div class="signature">
+                — Daniel
+            </div>
+
+        </article>
+
+    </section>
+
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
